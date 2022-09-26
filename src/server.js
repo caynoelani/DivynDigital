@@ -11,19 +11,20 @@ const PORT = process.env.PORT || 5500;
 const nodemailer = require('nodemailer')
 require("dotenv").config();
 
-// ==============
-// ====ROUTES====
-// ==============
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/views/index.html'))
-})
-
 // express
 app.use(express.static('public'));
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')))
 app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')))
 app.use('/assets', express.static(path.join(__dirname, '../public')))
 app.use(express.json())
+
+
+// ==============
+// ====ROUTES====
+// ==============
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/views/index.html'))
+})
 
 app.post('/contact', (req, res) => {
     console.log(req.body)
@@ -40,7 +41,7 @@ app.post('/contact', (req, res) => {
     });
 
     const mailOptions = {
-        from: `<${req.body.email}>`,
+        from: `${req.body.email}`,
         to: process.env.CONTACT_EMAIL,
         subject: `Contact Request from ${req.body.email}`,
         html: `
@@ -55,7 +56,7 @@ app.post('/contact', (req, res) => {
         if(error){
             console.log(error)
             res.send('error')
-        }else {
+        } else {
             console.log('Message Sent')
             res.send('success')
         }
