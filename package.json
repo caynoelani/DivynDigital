@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon . & npm run scss",
+    "dev": "nodemon .",
     "start": "node .",
     "scss": "sass --watch src/scss/main.scss public/styles/main.css"
   },
