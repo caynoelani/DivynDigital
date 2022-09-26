@@ -12,18 +12,16 @@ const nodemailer = require('nodemailer')
 require("dotenv").config();
 
 // ==============
-// ==MIDDLEWARE==
-// ==============
-
-
-// ==============
 // ====ROUTES====
 // ==============
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../views/index.html'))
+    res.sendFile(path.join(__dirname, '../public/views/index.html'))
 })
 
 // express
+app.use(express.static('public'));
+app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')))
+app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')))
 app.use('/assets', express.static(path.join(__dirname, '../public')))
 app.use(express.json())
 
