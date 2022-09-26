@@ -34,14 +34,14 @@ app.post('/contact', (req, res) => {
         port: 465,
         secure: false,
         auth: {
-            user: process.env.CONTACT_EMAIL, //env
-            pass: process.env.CONTACT_EMAIL_PASSWORD, //env
+            user: process.env.CONTACT_EMAIL,
+            pass: process.env.CONTACT_EMAIL_PASSWORD,
         },
     });
 
     const mailOptions = {
         from: `<${req.body.email}>`,
-        to: process.env.CONTACT_EMAIL, //env
+        to: process.env.CONTACT_EMAIL,
         subject: `Contact Request from ${req.body.email}`,
         html: `
             <p>Name: ${req.body.fullName}</p>

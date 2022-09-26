@@ -61,6 +61,7 @@ contactForm.addEventListener('submit', (e) => {
             message.value = ''
             errorElement.innerText = ''
         } else {
+            errorElement.innerText = ''
             alert('Something went wrong!')
         }
     }
