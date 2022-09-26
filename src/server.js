@@ -20,7 +20,7 @@ require("dotenv").config();
 // ====ROUTES====
 // ==============
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'pages/index.html'))
+    res.sendFile(path.join(__dirname, '../views/index.html'))
 })
 
 // express
