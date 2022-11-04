@@ -41,30 +41,4 @@ contactForm.addEventListener('submit', (e) => {
         errorElement.innerText = errorMessages.join('\n')
         return
     }
-
-    formData = {
-        fullName: fullName.value,
-        email: email.value,
-        phoneNumber: phoneNumber.value,
-        message: message.value
-    }
-
-    let xhr = new XMLHttpRequest();
-    xhr.open('POST', '/contact');
-    xhr.setRequestHeader('content-type', 'application/json');
-    xhr.onload = function(){
-        if(xhr.responseText == 'success'){
-            alert('Email Sent')
-            fullName.value = ''
-            email.value = ''
-            phoneNumber.value = ''
-            message.value = ''
-            errorElement.innerText = ''
-        } else {
-            errorElement.innerText = ''
-            alert('Something went wrong!')
-        }
-    }
-
-    xhr.send(JSON.stringify(formData))
 })
